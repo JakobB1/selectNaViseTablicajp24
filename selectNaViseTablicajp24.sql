@@ -64,3 +64,19 @@ on g.smjer=s.sifra;
 select b.naziv as smjer, a.naziv as grupa
 from grupa a,smjer b
 where a.smjer=b.sifra;
+
+
+# zadatak 1
+# odaberite sva imena i prezimena polaznika
+# na smjeru Java programiranje
+
+select e.ime,e.prezime
+from smjer a inner join grupa b
+on a.sifra=b.smjer
+inner join clan c 
+on b.sifra=c.grupa 
+inner join polaznik d
+on d.sifra=c.polaznik
+inner join osoba e 
+on e.sifra = d.osoba
+where a.naziv='Java programiranje';
