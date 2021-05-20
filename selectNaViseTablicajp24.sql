@@ -15,3 +15,31 @@ update smjer set cijena=2500 where sifra=3;
 select b.naziv as smjer, a.naziv as grupa
 from grupa a inner join smjer b
 on a.smjer=b.sifra;
+
+# Unijeti grupu JP25
+insert into grupa(naziv,smjer)
+values('JP25',1);
+
+select b.naziv as smjer, a.naziv as grupa
+from grupa a inner join smjer b
+on a.smjer=b.sifra;
+
+select b.naziv as smjer, a.naziv as grupa
+from grupa a right join smjer b
+on a.smjer=b.sifra;
+
+select a.naziv as smjer, b.naziv as grupa
+from smjer a left join grupa b
+on a.sifra=b.smjer;
+
+select b.naziv as smjer, a.naziv as grupa,
+concat(d.ime, ' ', d.prezime) as predavac,
+concat(g.ime, ' ', g.prezime) as polaznik
+from grupa a 
+inner join smjer 	b on a.smjer=	b.sifra
+inner join predavac c on a.predavac=c.sifra
+inner join osoba 	d on c.osoba=	d.sifra
+inner join clan 	e on a.sifra = 	e.grupa
+inner join polaznik f on e.polaznik=f.sifra 
+inner join osoba 	g on f.osoba=	g.sifra
+where g.ime like 'J%';
