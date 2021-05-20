@@ -80,3 +80,32 @@ on d.sifra=c.polaznik
 inner join osoba e 
 on e.sifra = d.osoba
 where a.naziv='Java programiranje';
+
+# baza knjižnica
+# Odaberite sve naslove autora August Šenoa
+
+# Odaberite sve nazive izdavača koji su izdali
+# kataložni zapis s autorima čije ime počinje slovom A
+
+
+# Odaberite sva mjesta koja u svom nazivu nemaju
+# slova a
+
+# baza classic models
+# odaberit sve nazive proizvoda s pripadajućim
+# nazivom proizvodne linije
+select a.productName, b.productLine 
+from products a inner join productlines b 
+on a.productline=b.productLine;
+
+# Odaberite nazive proizvoda koji je kupio
+# kupac koji u svom prezimenu ima slovo k
+
+select a.productName 
+from products a inner join orderdetails b
+on a.productCode=b.productCode
+inner join orders c on
+b.orderNumber=c.orderNumber 
+inner join customers d on
+c.customerNumber=d.customerNumber 
+where d.customerName like '%k%';
