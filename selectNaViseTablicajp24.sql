@@ -43,3 +43,24 @@ inner join clan 	e on a.sifra = 	e.grupa
 inner join polaznik f on e.polaznik=f.sifra 
 inner join osoba 	g on f.osoba=	g.sifra
 where g.ime like 'J%';
+
+
+# osnovni
+select b.naziv as smjer, a.naziv as grupa
+from grupa a inner join smjer b
+on a.smjer=b.sifra;
+
+# alternativa 1
+select smjer.naziv as smjer, grupa.naziv as grupa
+from grupa inner join smjer
+on grupa.smjer=smjer.sifra;
+
+# alternativa 3
+select s.naziv as smjer, g.naziv as grupa
+from grupa g inner join smjer s
+on g.smjer=s.sifra;
+
+# alternativa 3
+select b.naziv as smjer, a.naziv as grupa
+from grupa a,smjer b
+where a.smjer=b.sifra;
